@@ -1,14 +1,334 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Engineering Lab</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <h1 id="greeting"></h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script type="module" src="script.js"></script>
-  </body>
+    <title>Web Engineering Lab 02</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <script type="module" src="script.js"></script>
+
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+    <!-- Header -->
+    <header>
+        <h1 id="greeting">Welcome to Web Engineering</h1>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li>
+                    <a href="#office-hours" aria-current="location">
+                        Office Hours
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#feedback">
+                        Send Feedback
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Office Hours -->
+        <section id="office-hours">
+
+            <h2>Office Hours</h2>
+
+            <p>
+                Below is the weekly office-hours schedule.
+            </p>
+
+            <!-- Decorative SVG -->
+            <div class="divider" aria-hidden="true">
+                <svg width="100%" height="20" viewBox="0 0 600 20">
+                    <line
+                        x1="0"
+                        y1="10"
+                        x2="600"
+                        y2="10"
+                        stroke="#0b5fff"
+                        stroke-width="2"
+                    />
+
+                    <circle
+                        cx="300"
+                        cy="10"
+                        r="7"
+                        fill="#0b5fff"
+                    />
+                </svg>
+            </div>
+
+            <!-- Office Hours Table -->
+            <div class="table-container">
+                <table>
+
+                    <caption>
+                        Weekly Office Hours Schedule
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Start Time</th>
+                            <th scope="col">End Time</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Monday</td>
+
+                            <td>
+                                <time datetime="10:00">
+                                    10:00 AM
+                                </time>
+                            </td>
+
+                            <td>
+                                <time datetime="11:00">
+                                    11:00 AM
+                                </time>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Wednesday</td>
+
+                            <td>
+                                <time datetime="12:00">
+                                    12:00 PM
+                                </time>
+                            </td>
+
+                            <td>
+                                <time datetime="13:00">
+                                    1:00 PM
+                                </time>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Friday</td>
+
+                            <td>
+                                <time datetime="14:00">
+                                    2:00 PM
+                                </time>
+                            </td>
+
+                            <td>
+                                <time datetime="15:00">
+                                    3:00 PM
+                                </time>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Informative SVG -->
+            <figure>
+
+                <svg
+                    width="45"
+                    height="55"
+                    viewBox="0 0 45 55"
+                    role="img"
+                    aria-labelledby="location-title"
+                >
+
+                    <title id="location-title">
+                        Location pin
+                    </title>
+
+                    <path
+                        d="M22.5 2
+                           C11 2 2 11 2 22
+                           C2 37 22.5 53 22.5 53
+                           C22.5 53 43 37 43 22
+                           C43 11 34 2 22.5 2Z"
+                        fill="#0b5fff"
+                    />
+
+                    <circle
+                        cx="22.5"
+                        cy="22"
+                        r="7"
+                        fill="white"
+                    />
+
+                </svg>
+
+                <figcaption>
+                    All office hours are held in Room 214.
+                </figcaption>
+
+            </figure>
+
+        </section>
+
+
+        <!-- Feedback -->
+        <section id="feedback">
+
+            <h2>Send Feedback</h2>
+
+            <form>
+
+                <!-- Name -->
+                <div class="form-group">
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value="Arshia Shahnawaz"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value="arshiashahnawaz28@gmail.com"
+                        aria-describedby="email-hint"
+                        required
+                    >
+
+                    <small id="email-hint">
+                        Please enter a valid email address.
+                    </small>
+
+                </div>
+
+
+                <!-- Topic -->
+                <fieldset>
+
+                    <legend>Topic</legend>
+
+                    <div class="radio-option">
+
+                        <input
+                            type="radio"
+                            id="topic-html"
+                            name="topic"
+                            value="html"
+                            required
+                        >
+
+                        <label for="topic-html">
+                            HTML
+                        </label>
+
+                    </div>
+
+
+                    <div class="radio-option">
+
+                        <input
+                            type="radio"
+                            id="topic-css"
+                            name="topic"
+                            value="css"
+                        >
+
+                        <label for="topic-css">
+                            CSS
+                        </label>
+
+                    </div>
+
+
+                    <div class="radio-option">
+
+                        <input
+                            type="radio"
+                            id="topic-accessibility"
+                            name="topic"
+                            value="accessibility"
+                        >
+
+                        <label for="topic-accessibility">
+                            Accessibility
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- Message -->
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Submit Button -->
+                <button type="submit">
+                    Submit Feedback
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <address>
+            Contact your instructor for help.
+        </address>
+
+    </footer>
+
+
+    <!-- Existing Lab 1 JavaScript -->
+    <script src="../script.js"></script>
+
+</body>
 </html>
+```
