@@ -1,0 +1,214 @@
+/*
+#box {
+    background-color: blue;
+    padding: 20px;
+}
+
+.heading {
+    color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+
+body {
+    font-family: "Times New Roman", serif;
+}
+
+.capital {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+
+.outer {
+    font-size: 25px;
+    
+}
+
+.inner {
+    font-size: 10px;
+
+}
+
+.outer {
+    font-size: 2em;
+}
+
+.inner {
+    font-size: 1rem;
+}
+
+
+.navbar {
+    height: 60px;
+    background-color: #0f1111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    color: #f08804;
+    font-size: 25px;
+}
+
+.links {
+    display: flex;
+    gap: 20px;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+}
+
+.search button {
+    background-color: #f08804;
+}
+
+
+header {
+    background-color: lightblue;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+footer {
+    background-color: lightgray;
+    padding: 20px;
+    text-align: center;
+}
+   
+
+
+body {
+    min-height: 1500px;
+    font-family: Arial, sans-serif;
+}
+
+.nature {
+    width: 220px;
+    height: 220px;
+    position: fixed;
+    right: 10px;
+    top: 200px;
+    z-index: 10;
+    text-align: center;
+    color: white;
+}
+
+.nature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.nature h2 {
+    margin-top: 85px;
+    text-shadow: 2px 2px 4px black;
+}
+
+ 
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: lightgray;
+}
+
+.child {
+    background-color: lightblue;
+    padding: 20px;
+    align-self: center;
+}
+ 
+ 
+.responsive {
+    background-color: blue;
+    padding: 40px;
+    text-align: center;
+    color: white;
+}
+
+@media (max-width: 300px) {
+    .responsive {
+        background-color: green;
+    }
+}
+
+@media (min-width: 301px) and (max-width: 400px) {
+    .responsive {
+        background-color: pink;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+    .responsive {
+        background-color: red;
+    }
+}
+
+@media (min-width: 601px) {
+    .responsive {
+        background-color: blue;
+    }
+}
+
+
+.hover-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: all 0.5s ease;
+}
+
+.hover-btn:hover {
+    font-size: 24px;
+    transform: rotate(5deg);
+}
+*/
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 8px solid lightgray;
+    border-top: 8px solid blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+

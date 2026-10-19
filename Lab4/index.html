@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Web Engineering Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="main.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header>
+        <h1>
+            <svg viewBox="0 0 24 24" aria-hidden="true"
+                 width="28" height="28">
+                <path fill="currentColor"
+                      d="M12 2L2 12h5v9h10v-9h5L12 2z"/>
+            </svg>
+            Web Engineering Lab
+        </h1>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#schedule">Schedule</a></li>
+                <li><a class="nav-link" href="#contact"
+                       aria-current="location">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="home">
+            <h2>Welcome</h2>
+            <p>Learn CSS layouts, the DOM, and JavaScript events.</p>
+
+            <figure>
+                <svg viewBox="0 0 100 50" role="img"
+                     aria-label="A simple blue landscape"
+                     width="100" height="50">
+                    <path fill="currentColor"
+                          d="M0 50 L25 10 L45 35 L65 5 L100 50 Z"/>
+                </svg>
+                <figcaption class="text-muted">
+                    A simple illustration using the current theme color.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section id="schedule">
+            <div class="schedule-details">
+                <h2>Lab Schedule</h2>
+                <p>Select a day to book your lab session.</p>
+                <p class="text-muted">Selected sessions are counted below.</p>
+            </div>
+
+            <div class="schedule-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Session</th>
+                            <th scope="col">Book</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>HTML and CSS</td>
+                            <td><button type="button" class="book-button"
+                                        data-day="Monday"
+                                        aria-pressed="false">Book</button></td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>Flexbox and Grid</td>
+                            <td><button type="button" class="book-button"
+                                        data-day="Wednesday"
+                                        aria-pressed="false">Book</button></td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>JavaScript DOM</td>
+                            <td><button type="button" class="book-button"
+                                        data-day="Friday"
+                                        aria-pressed="false">Book</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <p id="booking-status" role="status" aria-live="polite">
+            No sessions booked yet.
+        </p>
+
+        <section id="contact">
+            <h2>Contact Form</h2>
+
+            <form id="contact-form">
+                <h3 class="span-all">Send a Message</h3>
+
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" required>
+
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" required>
+
+                <p class="text-muted span-all">
+                    Enter a valid email address so we can contact you.
+                </p>
+
+                <fieldset class="span-all">
+                    <legend>Preferred contact method</legend>
+                    <label>
+                        <input type="radio" name="contact-method"
+                               value="email" checked>
+                        Email
+                    </label>
+                    <label>
+                        <input type="radio" name="contact-method"
+                               value="phone">
+                        Phone
+                    </label>
+                </fieldset>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message"
+                          rows="4" required></textarea>
+
+                <button class="span-all" type="submit">
+                    Send Message
+                </button>
+
+                <p id="form-status" class="text-muted span-all"
+                   role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p class="text-muted">Web Engineering Lab — Practice Project</p>
+    </footer>
+</body>
+</html>
