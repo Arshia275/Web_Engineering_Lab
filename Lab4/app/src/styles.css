@@ -1,0 +1,257 @@
+/* Layer order must be the FIRST statement in the file */
+@layer reset, base, components, utilities;
+
+/* ===================== RESET ===================== */
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, p, figure, ul { margin: 0; }
+}
+
+/* ============ BASE: tokens + typography ============ */
+@layer base {
+  :root {
+    color-scheme: light dark;
+    --space: 1rem;
+
+    /* Lab tokens (hue 255) */
+    --color-bg:     light-dark(oklch(96% 0.005 255), oklch(20% 0.02 255));
+    --color-text:   light-dark(oklch(25% 0.02 255), oklch(94% 0.01 255));
+    --color-accent: light-dark(oklch(52% 0.23 262), oklch(75% 0.12 255));
+    --color-border: color-mix(in oklch, var(--color-text) 40%, var(--color-bg));
+    --color-muted:  color-mix(in oklch, var(--color-text) 70%, var(--color-bg));
+
+    /* Extra tokens */
+    --color-surface:  light-dark(oklch(100% 0 0), oklch(25% 0.02 255));
+    --color-brand:    light-dark(oklch(52% 0.23 262), oklch(35% 0.12 262));
+    --color-nav:      color-mix(in oklch, var(--color-brand) 80%, black);
+    --color-on-brand: light-dark(oklch(100% 0 0), oklch(96% 0.01 255));
+    --color-footer:   light-dark(oklch(25% 0.01 255), oklch(14% 0.02 255));
+    --color-focus:    light-dark(oklch(50% 0.20 40), oklch(85% 0.17 90));
+
+    /* Lab 5: validation error colour (passes contrast in both modes) */
+    --color-error: light-dark(oklch(45% 0.2 25), oklch(75% 0.15 25));
+  }
+
+  body {
+    font-family: system-ui, Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+  }
+
+  input, textarea, button { font: inherit; }
+}
+
+/* ==================== COMPONENTS ==================== */
+@layer components {
+
+  /* ---------- Skip link ---------- */
+  .skip-link {
+    position: absolute;
+    inset-inline-start: 16px;
+    inset-block-start: -60px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding: 10px 15px;
+    border: 2px solid var(--color-text);
+    z-index: 1000;
+  }
+  .skip-link:focus { inset-block-start: 14px; }
+
+  /* ---------- Header (title on top, nav bar below) ---------- */
+  header {
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+  header h1 {
+    font-size: 1.9rem;
+    padding: 1.25rem 2.5rem;
+  }
+
+  nav { background: var(--color-nav); }
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0 2.5rem;
+  }
+  nav a {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 5px;
+  }
+  nav a:hover { text-decoration: underline; }
+
+  /* ---------- Specificity demo ----------
+     Original loser:  nav ul li a { color: purple; }  -> (0,0,4)
+     Fixed with :where():                             -> (0,0,1)  */
+  :where(nav ul li) a { color: purple; }
+
+  /* (0,1,0) beats the rule above */
+  .nav-link { color: oklch(92% 0.15 145); }                  /* light green */
+
+  /* (0,1,1) beats .nav-link -> current page */
+  a[aria-current="location"] { color: oklch(92% 0.10 20); }  /* light pink */
+
+  /* ---------- Visible keyboard focus ---------- */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+  nav a:focus-visible { outline-color: oklch(85% 0.17 90); }
+
+  /* ---------- Page ---------- */
+  main {
+    max-inline-size: 900px;
+    margin-inline: auto;
+    margin-block: 40px;
+    padding-inline: 25px;
+  }
+
+  section {
+    background: var(--color-surface);
+    padding: 30px;
+    margin-block-end: 35px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+  }
+
+  h2 { color: var(--color-accent); margin-block-end: 16px; }
+
+  /* ---------- SVG icons follow the theme ---------- */
+  svg { color: var(--color-accent); }
+  .pin-dot { fill: var(--color-surface); }
+  .divider { margin-block: 1rem 1.5rem; }
+
+  /* ---------- Office hours table ---------- */
+  .table-container { inline-size: 100%; overflow-x: auto; margin-block-end: 1.5rem; }
+
+  table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+  }
+  caption {
+    caption-side: top;
+    text-align: start;
+    font-size: 18px;
+    font-weight: bold;
+    padding-block-end: 12px;
+  }
+  th, td {
+    border: 1px solid var(--color-border);
+    padding: 15px 20px;
+    text-align: start;
+  }
+  thead th { background: var(--color-brand); color: var(--color-on-brand); }
+
+  tbody tr:nth-child(even) {
+    background: color-mix(in oklch, var(--color-accent) 8%, var(--color-surface));
+  }
+  tbody tr:hover {
+    background: color-mix(in oklch, var(--color-accent) 15%, var(--color-surface));
+  }
+
+  /* Booked row (set by main.ts) */
+  tr.selected th, tr.selected td {
+    background: color-mix(in oklch, var(--color-accent) 22%, var(--color-surface));
+  }
+
+  figure {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: color-mix(in oklch, var(--color-accent) 8%, var(--color-surface));
+    border-inline-start: 4px solid var(--color-accent);
+  }
+  figure svg { flex-shrink: 0; }
+  figcaption { font-weight: 500; }
+
+  #status { margin-block-start: 1rem; min-block-size: 1.6em; }
+
+  /* ---------- Form ---------- */
+  .form-group { margin-block-end: 22px; }
+
+  label { display: block; margin-block-end: 7px; font-weight: bold; }
+
+  input, textarea {
+    inline-size: 100%;
+    padding: 12px;
+    color: inherit;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+  }
+  textarea { min-block-size: 130px; resize: vertical; }
+
+  small { display: block; margin-block-start: 5px; }
+
+  fieldset {
+    margin-block: 0 25px;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+  }
+  legend { font-weight: bold; padding-inline: 8px; }
+
+  .radio-option { margin-block: 12px; }
+  .radio-option label {
+    display: inline;
+    margin-inline-start: 5px;
+    font-weight: normal;
+  }
+  input[type="radio"] { inline-size: auto; }
+
+  /* ---------- Lab 5: validation messages ---------- */
+  .error {
+    display: block;
+    color: var(--color-error);
+  }
+  input[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+
+  /* ---------- Buttons ---------- */
+  button {
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover { background: color-mix(in oklch, var(--color-brand) 80%, black); }
+  button:disabled { opacity: 0.6; cursor: wait; }
+  td button { padding: 8px 16px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--color-footer);
+    color: oklch(96% 0.01 255);
+    text-align: center;
+    padding: 25px;
+    margin-block-start: 40px;
+  }
+  footer address { font-style: normal; }
+
+  /* ---------- Small screens: ONE media query (40rem) ---------- */
+  @media (max-width: 40rem) {
+    header h1 { padding: 1rem 1.25rem; font-size: 1.5rem; }
+    nav ul { flex-direction: column; gap: 0; padding-inline: 1.25rem; }
+    main { margin-block: 25px; padding-inline: 15px; }
+    section { padding: 20px; }
+    th, td { padding: 10px; }
+    figure { flex-direction: column; align-items: flex-start; }
+  }
+}
+
+/* ==================== UTILITIES ==================== */
+@layer utilities {
+  .text-muted { color: var(--color-muted); }
+}
